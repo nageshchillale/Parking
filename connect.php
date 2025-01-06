@@ -1,10 +1,16 @@
 <?php
-$host="localhost";
-$user="root";
-$pass="";
-$db="login";
-$conn= new mysqli($host,$user,$pass,$db);
-if($conn->connect_error){
-    echo"failed to connect db".$conn->connect_error;
+// Database configuration
+$servername = "127.0.0.1";
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
+$dbname = "parkiee"; 
+$port="3308";
+
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $dbname,$port);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>

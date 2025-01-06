@@ -66,9 +66,7 @@ function validateForm() {
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
-    const dob = document.getElementById('dob').value;
-    const gender = document.getElementById('gender').value;
-    const address = document.getElementById('address').value.trim();
+    
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
     const errorMessage = document.getElementById('errorMessage');
@@ -113,14 +111,12 @@ function validateForm() {
 
       <div class="container">
         <h2>Creating your account in few moments...</h2><br>
-        <form id="infoForm">
+        <form id="infoForm" method="POST" action="userreg.php" enctype="multipart/form-data" onsubmit="validateForm(event)">
             <div class="form-group">
-                <i class="fas fa-user"></i>
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <i class="fas fa-email"></i>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
@@ -128,22 +124,14 @@ function validateForm() {
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" required>
             </div>
-           
-          
-           
             <div class="form-group">
-                <label for="address">License no. </label>
-                <input type="number" name="License" required>
+                <label for="license">License no.</label>
+                <input type="text" id="license" name="License" required>
             </div>
-            
             <div class="form-group">
-                <label for="document">Upload Identity proof </label>
+                <label for="document">Upload Identity Proof</label>
                 <input type="file" id="document" name="document" required>
             </div>
-
-
-
-
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
@@ -152,8 +140,7 @@ function validateForm() {
                 <label for="confirmPassword">Confirm Password</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required>
             </div>
-            <button type="button" class="btn" onclick="validateForm()">Create Account</button>
-            <div id="errorMessage" class="error"></div>
+            <button type="submit" class="btn">Create Account</button><div id="errorMessage" class="error"></div>
         </form>
     </div>
 
