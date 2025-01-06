@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creataccount</title>
+    <link href="parking.css" rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            background-color: #5d9075;
+            background: linear-gradient(0deg, #5d9075 0%, rgba(253,187,45,1) 100%) ;
+        }
+        .container {
+            width: 70%;
+            margin: 50px auto;
+            padding: 40px;
+            background: #5d9075;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+    <script >
+function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const dob = document.getElementById('dob').value;
+    const gender = document.getElementById('gender').value;
+    const address = document.getElementById('address').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const errorMessage = document.getElementById('errorMessage');
+
+    errorMessage.textContent = '';
+
+    if (!name || !email || !phone || !dob || !gender || !address || !password || !confirmPassword) {
+        errorMessage.textContent = 'All fields are required.';
+        return;
+    }
+
+    if (password.length < 6) {
+        errorMessage.textContent = 'Password must be at least 6 characters long.';
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        errorMessage.textContent = 'Passwords do not match.';
+        return;
+    }
+
+    alert('Form submitted successfully!');
+    document.getElementById('infoForm').reset();
+}
+
+    </script>
+
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #68A57A; border-radius: 5px;"> <!-- navbar used as heading -->
+        <div class="container-fluid">
+         
+           <a><img src="logo-svg.svg" alt="" sizes="" srcset="" style="width: 250px;"></a>
+           <a href="">Home</a>
+           <a href="">Map</a>
+           <a href="">Sign Up</a>
+            
+        </div>
+      </nav>
+
+      <div class="container">
+        <h2>Creating your account in few moments...</h2><br>
+        <form id="infoForm">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-email"></i>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+           
+          
+           
+            <div class="form-group">
+                <label for="address">License no. </label>
+                <input type="number" name="License" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="document">Upload Identity proof </label>
+                <input type="file" id="document" name="document" required>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <button type="button" class="btn" onclick="validateForm()">Create Account</button>
+            <div id="errorMessage" class="error"></div>
+        </form>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking</title>
+    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" /> 
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/ebe2869c5d.js" crossorigin="anonymous"></script>
+
+    <link href="parking.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-lg" style="background-color: #68A57A; border-radius: 20px;"> <!-- navbar used as heading -->
+    <div class="container-fluid">
+     
+       <a><img src="logo-svg.svg" alt="" sizes="" srcset="" style="width: 200px; height: 90px;"></a>
+       <a href="home.html">Home</a>
+       <a href="map.html">Map</a>
+       <a href="login.html">Sign Up</a>
+        
+    </div>
+  </nav>
+
+  <div class = "container mt-5">
+    <div class ="row">
+        <div class="col-lg-6 col-sm-12 mb-3">
+          <div class="d-flex justify-content-center">
+            <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label" ><i class="bi bi-person"></i>&ensp;Fullname</label>
+                  <input type="text"  class="form-control" id="name">
+                  <div><p id="nameError"></p></div>
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label"><i class="bi bi-phone"></i>&ensp;Phone Number</label>
+                  <input type="number" min="0" class="form-control" id="phone" placeholder="e.g.  +91-9730995805">
+                  <div ><p id="phoneError"></p></div>
+                </div>
+                <div class="mb-3">
+                  <label for="plate" class="form-label"><i class="fa fa-list-alt" aria-hidden="true"></i>&ensp;License Plate</label>
+                  <input type="text"   class="form-control" id="plate" placeholder="e.g.  MH24CN0001">
+                  <div ><p id="plateError"></p></div>
+                </div>
+                <div class="mb-3">
+                    <label for="model" class="form-label"><i class="lni lni-car-alt"></i>&ensp;Car Model</label>
+                    <input type="text"   class="form-control" id="model">
+                    <div ><p id="modelError"></p></div>
+                </div>
+                <button type="button" id="btn1"   class="btn btn-warning">Register</button>
+              </form>
+            </div>
+          </div>
+          <div class="appendclass col-lg-6 col-sm-12 ">
+              <!-- table for storing parking info when the car is parked -->
+              <table class="table table-borderless mt-5">
+                <thead>
+                  <p id="parkingHead"><i class="fa fa-product-hunt" aria-hidden="true"></i>&ensp;Parked Cars</p>
+                  <tr>
+                    <th scope="col" id="id">ID No</th>
+                    <th scope="col" id="namE">Name</th>
+                    <th scope="col" id="phonE">Phone</th>
+                    <th scope="col" id="platE">Plate</th>                
+                    <th scope="col" id="modeL">Model</th>
+                    <th scope="col" id="arrivaltimE">Arrival Time</th>
+                    <th scope="col" id="actioN">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="parkingtable">
+
+                </tbody>
+                <!-- table for storing parking info when the car is ready to check out -->
+              </table> 
+              <table class="table table-borderless mt-5">
+                <thead>
+                  <p id="receiptHead"><i class="bi bi-receipt"></i>&ensp;Receipt Table</p>
+                  <p id="receiptDescription">Rate - 1 birr per minute</p>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Plate</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Time Elasped</th>
+                    <th scope="col">Total Due</th>
+                    <th scope="col" >Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="receipttable">
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+           <!-- Modal for printing receipt on exit from parking lot -->
+          <div class="container-fluid">
+            <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="loanModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header" id="modalHeader">
+                    <h1 class="modal-title fs-5 text-center" id="receiptModalLabel"></h1>
+                  </div>
+                  <div class="modal-body" id="modalBody">
+
+                  </div>
+                  <div class="modal-footer" id="modalFooter">
+                    <button type="button" class="btn" id="closeBtn" data-bs-dismiss="modal">CLOSE</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br><br>
+            <hr style="color: #5d9075;"> 
+            <p  id="footer">Made by ©nagesh</p>
+          </div>
+
+
+
+
+  <script src="parking.js"></script>
+    
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+  integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+  
+  
+
+</body>
+</html>
